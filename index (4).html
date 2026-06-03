@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kayo Birthday 🎂</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&family=Cairo:wght@400;700&display=swap');
+
+:root {
+  --main-blue: #FF4D8D;
+  --accent-pink: #D63384;
+  --deep-purple: #5A0F3B;
+  --light-blue: #8A1C5C;
+  --lavender: #C2185B;
+  --soft-white: #FFE4F0;
+}
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: var(--soft-white);
+  overflow-x: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(
+  135deg,
+  #1A0712,
+  #330A21,
+  #5A0F3B,
+  #8A1C5C,
+  #C2185B,
+  #FF4D8D,
+  #C2185B,
+  #5A0F3B
+);
+  background-size: 600% 600%;
+  animation: gradientFlow 15s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+#gift-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, #3A0A24 40%, #14040D 100%);
+  z-index: 9999;
+  color: white;
+  transition: opacity 0.7s ease;
+}
+
+#gift-box {
+  width: 160px;
+  height: 160px;
+background: linear-gradient(
+  145deg,
+  #FF4D8D,
+  #D63384,
+  #8A1C5C
+);
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 0 30px rgba(0,147,233,0.7);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#gift-box::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: #CAF0F8;
+  transform: translateY(-50%);
+}
+
+#gift-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 20px;
+  height: 100%;
+  background: #CAF0F8;
+  transform: translateX(-50%);
+}
+
+#gift-box.open {
+  transform: scale(1.1) rotate(-3deg);
+  box-shadow: 0 0 50px rgba(0,147,233,1);
+}
+
+#message {
+  display: none;
+  margin-top: 20px;
+  font-size: 1.4em;
+  color: #BDE0FE;
+  text-shadow: 0 0 10px var(--main-blue);
+}
+
+#continue-btn {
+  display: none;
+  margin-top: 25px;
+background: rgba(58,10,36,0.65);
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1.1em;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+#continue-btn.show {
+  display: inline-block;
+  opacity: 1;
+}
+
+h1 {
+  font-family: 'Metal Mania', cursive;
+  font-size: 3.2em;
+  margin-top: 20px;
+color: #FFD6E8;
+  text-shadow: 0 0 12px #301B4F, 0 0 25px #3A1C7A;
+  animation: glow 2.5s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 12px #5CC8FF, 0 0 30px #4F32A5; }
+  to { text-shadow: 0 0 20px #B3E5FC, 0 0 40px #7B4DD8; }
+}
+
+p {
+  font-size: 1.3em;
+  color: #D8F8FF;
+  text-shadow: 0 0 4px #000;
+  line-height: 1.6;
+}
+
+img, video {
+  width: 260px;
+  margin-top: 25px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(150,90,255,0.4), 0 8px 25px rgba(0,0,0,0.5);
+  transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+  max-width: 90%;
+  height: auto;
+}
+
+img:hover {
+  transform: scale(1.07) rotate(-1deg);
+  opacity: 0.9;
+  box-shadow: 0 0 40px rgba(160,100,255,0.8), 0 12px 35px rgba(0,0,0,0.7);
+}
+
+button {
+  margin-top: 20px;
+  background: transparent;
+  border: 2px solid rgba(130,90,255,0.4);
+  color: #CBEAFF;
+  padding: 12px 32px;
+  font-size: 1.1em;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+box-shadow: 0 0 20px rgba(255,77,141,0.35);
+  transition: all 0.35s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(255,77,141,0.35),
+    rgba(194,24,91,0.35)
+  );
+  border-color: #FF6FA8;
+  box-shadow: 0 0 25px #FF4D8D;
+  color: #FFF;
+  transform: scale(1.07);
+}
+.page {
+  display: none;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(25,20,50,0.6);
+  box-shadow: 0 0 15px rgba(120,80,255,0.3);
+  max-width: 800px;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.video-box video {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(140,80,255,0.5);
+  margin-bottom: 20px;
+}
+.raining-hearts, .gift-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.raining-hearts .heart, .gift-hearts .heart {
+  position: absolute;
+  font-size: 20px;
+  opacity: 0.8;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-120px) rotate(360deg); opacity: 0; }
+}
+
+.images-row img {
+  opacity: 0;
+  transform: scale(0.9);
+  animation: popIn 0.8s ease forwards;
+}
+
+@keyframes popIn {
+  to { opacity: 1; transform: scale(1); }
+}
+
+.videos-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.videos-row video {
+  width: 300px;
+  height: 180px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.videos-row video:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255,255,255,0.5);
+}
+</style>
+</head>
+<body>
+
+<div id="gift-screen">
+  <div id="gift-box"></div>
+  <div id="message">well officially اتي 16</div>
+  <button id="continue-btn">let's make it loud </button>
+  <div id="giftHeartsContainer" class="gift-hearts" aria-hidden="true"></div>
+</div>
+
+<div class="raining-hearts" id="rainingHearts"></div>
+
+<div id="mainContent" style="display:none;">
+  <div id="hearts-container"></div>
+  <h1>هابي بيرث داي تو يو لوميي عقبال ال 67</h1>
+  <p>زبد هابيي بيرث داي وكل سنه وانتي بخير يارب ما اعرف اعبر بس يارب تكون كل سنواتك فرح<br>ms.kayo </p>
+  <button onclick="togglePages()">only for لوميي</button>
+  <div id="pages-container" style="display:none;">
+    <div id="pages-list">
+      <button onclick="showPage(1)">تهنئة يسمن</button>
+      <button onclick="showPage(2)"> تهنئة ثه</button>
+      <button onclick="showPage(3)"> تهنئة مب</button>
+      <button onclick="showPage(4)">تهنئة مادوزا </button>
+      <button onclick="showPage(5)">تهنئة بيرم </button>
+      <button onclick="showPage(6)">تهنئة نانا</button>
+      <button onclick="showPage(7)">تهنئة زيود</button>
+      <button onclick="showPage(8)">تهنئة كركر</button>
+      <button onclick="showPage(9)">تهنئة بوب</button>
+
+    </div>
+      <div class="page" id="page1"><h2> يسمن</h2>ويلي ويلي ويلي ويلييي وليتي 16!!!!!!!!! اخيرا وليتي قدي و مابقيتش متبنياك✌🏻✌🏻 عيد ميلاد سعيد لمياءءؤ💗💯🎉🎉 بغيت نكتب رسالة كماشي غا تهنئة ولاكين حتا فين نعبر على مشاعري (استغفر الله)، دايما تانستمتع ملي تاندوز الوقت معاك و ملي تانهدرو، دوزنا بزاف ديال المواقف لي ميتمكنش ههههههه و واخا هكاك بقينا مع بعضياتنا (ماشي بحال... بدون ذكر الاسماء)، و داز بالنسبة ليا احسن عام دراسي (يعني زعما على الصحاب اما القراية الله يجيب) و ماشي بحال الاعوام لي فاتو واخا زعما كانو اعوام عاديين زعما ما خايبين ما زوينين ولاكين فهمتيني. شخصيتك نتي تتكون من الخلل و التعوق مع المنطق، كاتجيك الدودة ولاكين في مواضيع جدية هاهنا نبات، واخا الصراحة ماتانحملش النقاشات 😴 واقيلا غا حيت أنا ماعنديش تجارب انني اتناقش مع شي حد و تانفضل نبحث فداكشي بوحدي، و ماتانبغيش نهدر في اشياء انا ماتانعرف عليها حتا وزا حيت غانبدا غا تانخربق😐 و بعض المرات نتي كاتجيني شخص صارم و سخون الكتاف (زعما ملي تاتعبري على رأيك فشي حاجة) و المهم غا ماعنديش مع هاذ النوع انا شوي هادئ😴 ولاكين عامة انتي شخص مرح و منطقي ;) و ملي تانشوفك باغا تديري مجهود باش تحسني من مستواكي الدراسي تانشوف كاين الامل خصوصا فالماط و الفيزيك (الفرنسي و العلوم الله يجيب، مانلومكش حتا انا طلعو ليا فراسي) و الصراحة تايعجبني الحال بزاف ملي تانشوف صاحبتي المعواقة دراسيا باغا تحسن من نفسها و تدير مجهود ماشي بحال واحد بارد الكتاف بلا ماندكرو الاسماء حشومة 😓 غا هو والله انا مااااا شات جيبيتي و انا و مقاتلة مع راسي ماتانفهم تا خرية ها العاااااارررررر ، ماتانحملش شي حد يسولني على شي حاجة مافاهما فيها انا حتا وزا عافاككككككك انا لست مثالية 😭😭 الخوت SOS راه لمياء كاتعدب فياااااااااعععع😓😓 انا خائف منك😢 بدك كنتاكي بعد ههههههههههههه (حلبتيها و عجباتني حتا انا). وا المهم ان شاء الله تولي شخص تاتجيه القراية ساهلة (حيت راه صعيبة بسباب لاباز)، ماكاين ما حسن انك تفهم اخيرا درس ديال الماط ولا الفيزيك. ختمنا الرسالة حيت مشاو ليا المواضيع 😓😢 المهم عرفي انك صديقة قريبة بنسبة ليا 😋😛😋😋🤤🤤 و انا اوحيبوك🥰🥰😍😍💗💗✌🏻✌🏻 (استغفر الله علامات الساعة ان هذا منكر)، اتمنى دايما تكوني سعيدة فحياتك و تديري داكشي لي تايعجبك و تكوني مرتاحة!<p>اثاني مشاركه و كتكتت </p><button onclick="backToList()">العودة للقائمة</button></div>
+ 
+        <div class="page" id="page2"><h2> ثهد</h2>HAPPY BIRTHDAY لملومتييييي
+اعععع ثرتي كبيره ببكي والله صعنونتي احبس اتمنالك احلى عيد ميلاد ياختي معرف ايش اقلك بس المهم احبك مرهههه احثن لملومه بلكون و احثن فنانه ياختي انتي احثن وحده عرفته احبس مره احبس مواح المهم يارب تعجبك الهديه صح الرسمه مو مره واو و تمنيت سويت اشي احلى لانك تستاهلين اكتر بث يلا عاتسي اوف ثح احبس مره مواح😋😋
+المهم خلاث بطلي تكبري كبرتي مره ببكي فنانني الصعنونه كبرت💔 ثح HAPPY BIRTHDAY حبيي استمتعي بيومك يارب تضربك السعاده بيبي قرل😛🍎
+مدري ايش جالسه اخبص المهم احبك و يارب تعجبك الهديه🍎🍎🍎<p>
+كتبت بحكمه (أنا بودي ب اقيم كل وحدة)</p><button onclick="backToList()">العودة للقائمة</button></div>
+    <div class="page" id="page3"><h2>موب</h2>HAPPY BIRTHDAY لملومتييييي
+اعععع ثرتي كبيره ببكي والله صعنونتي احبس اتمنالك احلى عيد ميلاد ياختي معرف ايش اقلك بس المهم احبك مرهههه احثن لملومه بلكون و احثن فنانه ياختي انتي احثن وحده عرفته احبس مره احبس مواح المهم يارب تعجبك الهديه صح الرسمه مو مره واو و تمنيت سويت اشي احلى لانك تستاهلين اكتر بث يلا عاتسي اوف ثح احبس مره مواح😋😋
+المهم خلاث بطلي تكبري كبرتي مره ببكي فنانني الصعنونه كبرت💔 ثح HAPPY BIRTHDAY حبيي استمتعي بيومك يارب تضربك السعاده بيبي قرل😛🍎
+مدري ايش جالسه اخبص المهم احبك و يارب تعجبك الهديه🍎🍎🍎<p>عبد و يتكلم بس ب نمشيها له</p><button onclick="backToList()">العودة للقائمة</button></div>
+  </div>
+  <div class="page" id="page4"><h2>مزدلفه</h2>موب my son💫 كل عام وانت بألف خير يا أطيب وألطف شخص إن شاء الله دايمًا بخير وتعيش حياة حلوة متلك  😉🤍 صراحة بالأول كنت مفكرتك نرجسي لأنك بتسب كتير 😭 بس بعدين ندمت، واكتشفت إنك إنسان نادر قلبك طيب بطريقة ما بتتوصف 🥺💔 بعرف إنو اليوم عيد ميلادك، ويمكن بالك مشغول بسبب يلي عم يصير بالسودان، الله يكون بعون إخوتنا هناك وينتقم من كل ظالم 💔🙏🏻. ما بعرف عبّر منيح، بس صدقني بتمنى من قلبي تضل بخير وتحقق كل يلي بتحلم فيه، وبإذن الله رح تصير دكتور متل ما بدك، حتى لو الطريق صعب أنا مأمنة فيك دايمًا… ورح ضل فخورة فيك وداعمتك my son🤍🔥<p>
+بدون كذب she nailed it 💅🏻</p><button onclick="backToList()">العودة للقائمة</button></div>
+    <div class="page" id="page5"><h2>بيرم 🍄</h2>من الفطر اي لومياء🍄💞
+
+اهلا لمياء كل سنة وانتي طيبة وانشالله تكون السنة ذي حلوة و ما تلاقي حزن ادري انو ذي الرسالة غبية وغريبة بس احسن شي انتي تعرفت عليكي انتي وكل الناس يلي خططو لحفلة عيد ميلادك صح اننا ما نحكي كثير بس لساتنا اصحاب حتى لو ما بنحكي... اتمنى لكي عيد ميلاد سعيد وانشالله تصولي لل100سنة وانتي عايشاها بعيد عن الحزن و مليانة بالفرح والسعادة... اسف لو الرسالة غريبة او غير مفهومة بس كتبت فيها كل يلي احسو بيعجبك 👀
+
+كل عام وانتي بالف خير وعافية🎉🎉🎉<p>
+بموتت احبك بيرم 🍄👅</p><button onclick="backToList()">العودة للقائمة</button></div>
+    <div class="page" id="page6"><h2>نانا</h2>⊹₊꒷︶꒷꒦‧₊˚⊹︰꒷⊹₊꒷︶꒷꒦‧₊˚⊹︰꒷
+
+𝑯𝒂𝒑𝒑𝒚 𝑩𝒊𝒓𝒕𝒉𝒅𝒂𝒚, 𝑳𝒂𝒎𝒊𝒂𝒆 ~♥︎
+
+. ۫ ꣑ৎ   . 𝐈 𝐰𝐢𝐬𝐡 𝐲𝐨𝐮 𝐚 𝐝𝐚𝐲 𝐟𝐢𝐥𝐥𝐞𝐝 𝐰𝐢𝐭𝐡 𝐣𝐨𝐲, 𝐥𝐚𝐮𝐠𝐡𝐭𝐞𝐫, 𝐚𝐧𝐝 𝐚𝐥𝐥 𝐭𝐡𝐞 𝐡𝐚𝐩𝐩𝐢𝐧𝐞𝐬𝐬 𝐲𝐨𝐮 𝐝𝐞𝐬𝐞𝐫𝐯𝐞. 𝐌𝐚𝐲 𝐭𝐡𝐢𝐬 𝐲𝐞𝐚𝐫 𝐛𝐫𝐢𝐧𝐠 𝐲𝐨𝐮 𝐬𝐮𝐜𝐜𝐞𝐬𝐬, 𝐰𝐨𝐧𝐝𝐞𝐫𝐟𝐮𝐥 𝐦𝐞𝐦𝐨𝐫𝐢𝐞𝐬, 𝐚𝐧𝐝 𝐞𝐯𝐞𝐫𝐲𝐭𝐡𝐢𝐧𝐠 𝐲𝐨𝐮𝐫 𝐡𝐞𝐚𝐫𝐭 𝐰𝐢𝐬𝐡𝐞𝐬 𝐟𝐨𝐫.
+
+. ۫ ꣑ৎ   . 𝐓𝐡𝐚𝐧𝐤 𝐲𝐨𝐮 𝐟𝐨𝐫 𝐛𝐞𝐢𝐧𝐠 𝐬𝐮𝐜𝐡 𝐚 𝐰𝐨𝐧𝐝𝐞𝐫𝐟𝐮𝐥 𝐟𝐫𝐢𝐞𝐧𝐝. 𝐄𝐧𝐣𝐨𝐲 𝐲𝐨𝐮𝐫 𝐬𝐩𝐞𝐜𝐢𝐚𝐥 𝐝𝐚𝐲 𝐭𝐨 𝐭𝐡𝐞 𝐟𝐮𝐥𝐥𝐞𝐬𝐭!
+
+𝐖𝐢𝐭𝐡 𝐥𝐨𝐯𝐞,
+[ 𝓝𝓪𝓷𝓪  ♡ ]
+
+⊹₊꒷︶꒷꒦‧₊˚⊹︰꒷⊹₊꒷︶꒷꒦‧₊˚⊹︰꒷<p>يمه رعب حرفيا زخرفات</p><button onclick="backToList()">العودة للقائمة</button></div>
+     <div class="page" id="page7"><h2>زيود/مبرمج</h2>Haapppyyyy bbiirrtthhhddaaayyy mmyy ffiisshhh🥳🥳💓💓
+سنة سعيدة عليكي لميؤؤةة و ويارب تكون سنة كلها فرحة وسعادة لكي وتحققي فيها اللي تبيه
+مااعرف اعايد مثل البشر بس ابغاكي تعرفي انك من افضل الناس اللي عرفتها في حياتي والله واتمنى تدوم صداقتنا للابد💓💓
+حتى لو ماصارت علاقتنا مثل قبل بس تظلي صديقتي الصدوقة وللحين اصدع الناس بكيف عرفتك🦦🦦
+لانك ببساطة سبشيال و شخص ما يتعوض صدق....اتمنالك حياة مليئة بالسعادة💓
+وما مصدق انك كملتي 16 حتى اااععععع لميؤؤةة كبررتتت🦦🦦
+عقبال باقي سنين حياتك المهم وكل سنة تكوني اسعد و ف صحة جيدة اكثر من السنة اللي قبلها....كان ودي اقول كلام كثير والله بس بس مهما اقول ما بكون وفيت بالكلام في قد ايش انتي مميزة في حياتنا وانا متأكد ان وجودك في حياة اي شخص بيفرق مرة وماعمري نسيت كيف كنتي معاي ودائما متذكر صداقتك ومساعدتك لي وكلامك وكل ششيي وكل صدق كل ثانية كانت معاكي كانت ممتعة جدداااا ...عندك القدرة انك تجلبي سعادة و فرحة لغيرك تلقائيا ف انتي صدق شخص ما يتعوض ابدا و الله يخليكي لينا داائئممماااا 
+
+...و اتمنى هديتي تكون عجبتك لو كانوا قالولي من بدري كنت سويتلك شي احلى لانك تستاهلي الاحلى دائما🦦💓
+ككلل ععاااممم وانتي بخييرر لمييؤؤتتتييي🥳🥳💓💓
+كل عاامم وانتي بخييرر سمككتتيي🥳💓
+كل عام وانتي بخير ليماء وشيماء كمااان لان ليش للااا🦦💓
+كل عاامم وانتي لمياء💓<p>
+اول مره يشارك معي و دخل بقوة </p><button onclick="backToList()">العودة للقائمة</button></div>
+    <div class="page" id="page8"><h2>كركر</h2> السلام عليكم ورحمة الله
+كل سنة وانتي بخير وصحة وسلامة 
+من اقدم الناس الي اعرفهم حاليا بالالكتروني واول شخص استقبلني بالقروب صراحة تعجبني طاقتي وحماستك وهمجيتك يعني من وراك وورا بودي تعرفت على ناس كثيييير وكلهم احبهم واعزهم وانتي صراحة انسانه كيوت وطيبه رغم انك همجيه وانفعاليه وغبيه😑 وصح انه اخر مره تراسلنا زماننننن لكن ما اتوقع بنساكي وعقبال الالف سنة
+وكل عام وانتي بخير يا لمياء من افضل الناس الي قابلتهم في العالم الالكتروني
+
+happyyyy birthdayyyyyyyyy tyyyyy🥳🥳🥳🥳🥳🥳🥳🥳
+اول رسالة احطها ل كركر ب موقع <p></p><button onclick="backToList()">العودة للقائمة</button></div>
+     <div class="page" id="page9"><h2>بوب</h2>لميييااءءء يا سااحرررهه كل عااام ةانتي بخير يارب يارب يكون عام سعيد بنسبه لكي وتستمتعي فيه،  وشفتك خلصتي امتحانات ان شاء الله ترسبي يا رب لاني بحسدك واحطك بدائره الحسد، من يوم وطالع غرت منك بصير احسدك كللل يوم، المشكله انك مغربيه كمان🤢🤢، كل عام وانتي بخير و يوم سعيد ان شاء الله ، محمحمح(؛<p>
+بببب عمرييي موححح</p><button onclick="backToList()">العودة للقائمة</button></div>
+
+     </div>
+
+  <img src="https://i.postimg.cc/V6H5s0pY/IMG-20260604-WA0030.jpg" alt="اعتذر الصورة من ميلاد شهد بس ترشي انشغل" />
+  <br><button onclick="showSurprise()">وقت الهزايا😋</button>
+
+  <div id="surprise" style="display:none;">
+    <div class="images-row" style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-bottom:20px;">
+      <div style="text-align:center;">
+        <p class="video-caption">رسمت يسمن</p>
+        <img src="https://i.postimg.cc/cLm3yCxR/IMG-20260603-WA0033.jpg" alt="بوب طبخ 😋" style="width:900px; height:300px; object-fit:cover;">
+      </div>
+    <div style="text-align:center;">
+      <p class="video-caption">رسمات ثه </p>
+      <img src="https://i.postimg.cc/vBzyvVH0/35949917e3b343317d9a57636e686b2c-1.jpg" alt="رسومات شهد" 
+           style="width:250px; height:250px; border-radius:15px; cursor:pointer; box-shadow:0 0 10px rgba(0,0,0,0.3);"
+           onclick="document.getElementById('album1').style.display='block'">
+
+      <div id="album1" style="
+  display:none;
+  position:fixed;
+  top:0; left:0; right:0; bottom:0;
+  background:rgba(0,0,0,0.8);
+  padding:30px;
+  text-align:center;
+  overflow-y:auto;
+  z-index:10000;
+">
+        <div style="background:#fff; display:inline-block; padding:15px; border-radius:10px; max-width:90%; position:relative;">
+          <span style="position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer;" onclick="document.getElementById('album1').style.display='none'">&times;</span>
+          <h3 style="margin-top:0;">she cooked</h3>
+          <img src="https://i.postimg.cc/gcVkB5kj/IMG-20260603-WA0062.jpg" style="width:100%; border-radius:8px; margin-bottom:10px;">
+          <img src="https://i.postimg.cc/Y0rcPdbx/IMG-20260603-WA0061.jpg style="width:100%; border-radius:8px; margin-bottom:10px;">
+          
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <p class="video-caption">رسمه بوب 😝 </p>
+      <img src="https://i.postimg.cc/wvzfjRVC/IMG-20251031-200343-100.jpg" alt="سكش بوب 🤤" 
+           style="width:250px; height:250px; border-radius:15px; cursor:pointer; box-shadow:0 0 10px rgba(0,0,0,0.3);"
+           onclick="document.getElementById('album2').style.display='block'">
+
+      <div id="album2" style="
+  display:none;
+  position:fixed;
+  top:0; left:0; right:0; bottom:0;
+  background:rgba(0,0,0,0.8);
+  padding:30px;
+  text-align:center;
+  overflow-y:auto;
+  z-index:10000;
+">
+        <div style="background:#fff; display:inline-block; padding:15px; border-radius:10px; max-width:90%; position:relative;">
+          <span style="position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer;" onclick="document.getElementById('album2').style.display='none'">&times;</span>
+          <h3 style="margin-top:0;">📖 سكتش بوب</h3>
+          <img src="https://i.postimg.cc/nL0SRhZp/IMG-20251030-230848-925.jpg" style="width:100%; border-radius:8px; margin-bottom:10px;">
+          <img src="https://i.postimg.cc/KcLr48VY/IMG-20251030-230839-253.jpg" style="width:100%; border-radius:8px; margin-bottom:10px;">
+          <img src="https://i.postimg.cc/mZMNhgqN/IMG-20251030-230846-861.jpg" style="width:100%; border-radius:8px;">
+        </div>
+      </div>
+    </div>
+      <div class="videos-row">
+        <video controls>
+          <source src="mob_vid_kayo.mp4" type="video/mp4">
+          متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+        <video controls>
+          <source src="VID_20260603_142816_504.mp4" type="video/mp4">
+          متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+        
+<style>
+.link-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #0077B6, #00B4D8);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-family: 'Cairo', sans-serif;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.link-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #00B4D8, #0096C7);
+}
+</style>
+    </div>
+  </div>
+</div>
+
+<script>
+const giftBox = document.getElementById('gift-box');
+const message = document.getElementById('message');
+const continueBtn = document.getElementById('continue-btn');
+const giftScreen = document.getElementById('gift-screen');
+const mainContent = document.getElementById('mainContent');
+const giftHeartsContainer = document.getElementById('giftHeartsContainer');
+
+document.body.style.overflow = 'hidden';
+
+giftBox.addEventListener('click', () => {
+  giftBox.classList.add('open');
+  createGiftHearts();
+  setTimeout(() => {
+    message.style.display = 'block';
+    continueBtn.classList.add('show');
+  }, 600);
+});
+
+continueBtn.addEventListener('click', () => {
+  giftScreen.style.opacity = '0';
+  setTimeout(() => {
+    giftScreen.style.display = 'none';
+    mainContent.style.display = 'block';
+    document.body.style.overflow = 'auto';
+    giftHeartsContainer.innerHTML = '';
+  }, 700);
+});
+
+function createGiftHearts() {
+  const count = 25;
+  for (let i = 0; i < count; i++) {
+    const heart = document.createElement('div');
+    heart.textContent = '🩷🍓';
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * 100 + '%';
+    heart.style.bottom = '-30px';
+    heart.style.fontSize = (14 + Math.random() * 26) + 'px';
+    const duration = (2 + Math.random() * 3).toFixed(2);
+    heart.style.animation = `floatUp ${duration}s ease-out forwards`;
+    heart.style.transform = `translateX(${(Math.random() - 0.5) * 40}px)`;
+    giftHeartsContainer.appendChild(heart);
+    setTimeout(() => heart.remove(), (parseFloat(duration) + 0.3) * 1000);
+  }
+}
+setInterval(() => {
+  const heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.fontSize = (20 + Math.random() * 20) + 'px';
+  const duration = (3 + Math.random() * 3).toFixed(2);
+  heart.style.animationDuration = `${duration}s`;
+  heartsContainer.appendChild(heart);
+  setTimeout(() => heart.remove(), duration * 1000);
+}, 400);
+
+function togglePages() {
+  const container = document.getElementById('pages-container');
+  container.style.display = container.style.display === 'none' ? 'block' : 'none';
+}
+
+function showPage(num) {
+  document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+  const page = document.getElementById('page' + num);
+  page.style.display = 'block';
+  page.scrollIntoView({ behavior: "smooth" });
+}
+
+function backToList() {
+  document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+  document.getElementById('pages-list').scrollIntoView({ behavior: "smooth" });
+}
+
+function showSurprise() {
+  const surprise = document.getElementById("surprise");
+  surprise.style.display = "block";
+  surprise.scrollIntoView({ behavior: "smooth" });
+}
+</script>
+</body>
+</html>
